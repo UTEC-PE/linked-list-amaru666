@@ -1,21 +1,28 @@
-#ifndef ITERATOR_H
-#define ITERATOR_H
+//
+// Created by damin on 21/08/18.
+//
 
-#include "node.h"
+#ifndef ADE_ITERATOR_H
+#define ADE_ITERATOR_H
+
+
+#include "Node.h"
 
 template <typename T>
 class Iterator {
-    private:
-        Node<T>* current;
-    
-    public:
-        Iterator();
-        Iterator(Node<T>* node);
-         
-        Iterator<T> operator=(Iterator<T> node);
-        bool operator!=(Iterator<T> cmp);
-        Iterator<T> operator++();
-        T operator*();
+private:
+    Node<T>* current;
+
+public:
+    Iterator();
+    Iterator(Node<T>* node);
+
+    Iterator<T> operator=(Iterator<T> node);
+    bool operator!=(Iterator<T> cmp);
+    Iterator<T> operator++();
+    T operator*();
 };
 
-#endif
+
+
+#endif //ADE_ITERATOR_H
