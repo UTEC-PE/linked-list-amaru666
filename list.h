@@ -53,7 +53,17 @@ public:
     int size() {
 
     };
-    void print();
+    void print() {
+        if(empty()) {
+            cout<<"la lista está vacía"<<endl;
+        } else {
+            Node<T>* temp = head;
+            while(temp != NULL) {
+                cout<<temp->data<<endl;
+                temp = temp->next;
+            }
+        }
+    };
     void print_reverse();
     void clear();
     Iterator<T> begin();
