@@ -34,23 +34,59 @@ public:
     };
     void push_front(T value) {
         Node<T>* nuevo = new Node<T>;
-        nuevo->next = head;
         nuevo->data = value;
-        head= nuevo;
+        if(empty()) {
+            nuevo->next = NULL;
+            tail = nuevo;
+            head = nuevo;
+        } else {
+            nuevo->next = head;
+            head= nuevo;
+        }
     }; //correcto
     void push_back(T value) {
         Node<T>* nuevo = new Node<T>;
         nuevo->data = value;
         nuevo->next = NULL;
-        tail->next = nuevo;
-        tail = nuevo;
+        if(empty()) {
+            tail = nuevo;
+            head = nuevo;
+        }else{
+            tail->next = nuevo;
+            tail = nuevo;
+        }
     };
     void pop_front() {
+        Node<T> *node = new Node<T>;
+        node = head->next;
+        delete head;
+        head = node;
+    };
+    void pop_back(){
+        Node<T> *node = head;
+        while(node->next != tail) {
+            node = node->next;
+            if(node->next == tail) {
+                delete tail;
+                tail = node;
+                tail->next = NULL;
+                break;
+            }
+        }
+    };
+    T get(int position){
+        int i = 0;
+        Node<T> *node = head;
+        while(node != NULL) {
+            if(i == position)break;
+            node=node->next;
+            i++;
+        }
+        return node->data;
+    };
+    void concat(List<T> &other) {
 
     };
-    void pop_back(){};
-    T get(int position){};
-    void concat(List<T> &other);
     bool empty() {
         return head==NULL?true:false;
     };
@@ -63,13 +99,18 @@ public:
         } else {
             Node<T>* temp = head;
             while(temp != NULL) {
-                cout<<temp->data<<endl;
+                cout<<temp->data<<" ";
                 temp = temp->next;
             }
+            cout<<endl;
         }
     };
-    void print_reverse();
-    void clear();
+    void print_reverse() {
+
+    };
+    void clear() {
+
+    };
     Iterator<T> begin();
     Iterator<T> end();
 

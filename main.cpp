@@ -13,5 +13,23 @@ int main() {
     lista->print();
     cout<<"front() : "<<lista->front()<<endl;
     cout<<"back() : "<<lista->back()<<endl;
+
+
+    lista->push_back(22);
+    lista->push_back(33);
+    lista->push_back(11);
+    lista->print();
+    cout<<"front() : "<<lista->front()<<endl;
+    cout<<"back() : "<<lista->back()<<endl;
+
+    lista->pop_front();
+    lista->pop_back();
+    lista->print();
+    cout<<"front() : "<<lista->front()<<endl;
+    cout<<"back() : "<<lista->back()<<endl;
+
+    cout<<"get(2) :"<<lista->get(2)<<endl;
+
+
     return 0;
 }
