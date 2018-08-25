@@ -7,8 +7,8 @@
 
 
 #include <iostream>
-#include "Node.h"
-#include "Iterator.h"
+#include "node.h"
+#include "iterator.h"
 
 using namespace std;
 
@@ -22,7 +22,9 @@ private:
     void print_reverse(Node<T>* head);
 
 public:
-    List();
+    List():head(NULL),tail(NULL){
+
+    };
 
     T front() {
         return head->data;
@@ -35,7 +37,7 @@ public:
         nuevo->next = head;
         nuevo->data = value;
         head= nuevo;
-    };
+    }; //correcto
     void push_back(T value) {
         Node<T>* nuevo = new Node<T>;
         nuevo->data = value;
@@ -46,13 +48,15 @@ public:
     void pop_front() {
 
     };
-    void pop_back();
-    T get(int position);
+    void pop_back(){};
+    T get(int position){};
     void concat(List<T> &other);
-    bool empty();
-    int size() {
-
+    bool empty() {
+        return head==NULL?true:false;
     };
+   /* int size() {
+
+    };*/
     void print() {
         if(empty()) {
             cout<<"la lista está vacía"<<endl;
@@ -73,6 +77,5 @@ public:
 
 
 };
-template <typename T>
 
 #endif //ADE_LIST_H
