@@ -130,7 +130,12 @@ public:
         if(empty()){
             cout<<"la lista está vacía"<<endl;
         }else{
-
+            int i = size()-1;
+            while(i>=0){
+                cout<<get(i)<<" ";
+                i--;
+            }
+            cout<<endl;
         }
     };
    void clear() {
