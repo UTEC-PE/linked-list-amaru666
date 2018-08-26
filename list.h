@@ -75,25 +75,46 @@ public:
         }
     };
     T get(int position){
-        int i = 0;
-        Node<T> *node = head;
-        while(node != NULL) {
-            if(i == position)break;
-            node=node->next;
-            i++;
+        if(empty()){
+            return 0;
+        }else{
+            int i = 0;
+            Node<T> *node = head;
+            while(node != NULL) {
+                if(i == position)break;
+                node=node->next;
+                i++;
+            }
+            return node->data;
         }
-        return node->data;
     };
-    void concat(List<T> &other) {
-
+    void concat(List<T> *other) {
+        if(!other->empty()){
+            tail->next = other->head;
+            tail = other->tail;
+        } else if(empty() && !other->empty()) {
+            head = other->head;
+            tail = other->tail;
+        }
     };
     bool empty() {
         return head==NULL?true:false;
     };
-   /* int size() {
+   int size() {
+        int contador = 0;
+        if(empty()){
+            return contador;
+        } else {
 
-    };*/
-    void print() {
+            Node<T> *temp = head;
+            while(temp != NULL){
+                contador++;
+                temp = temp->next;
+            }
+            return contador;
+        }
+    };
+   void print() {
         if(empty()) {
             cout<<"la lista está vacía"<<endl;
         } else {
@@ -105,10 +126,14 @@ public:
             cout<<endl;
         }
     };
-    void print_reverse() {
+   void print_reverse() {
+        if(empty()){
+            cout<<"la lista está vacía"<<endl;
+        }else{
 
+        }
     };
-    void clear() {
+   void clear() {
 
     };
     Iterator<T> begin();
