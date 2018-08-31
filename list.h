@@ -27,10 +27,10 @@ public:
     };
 
     T front() {
-        return head->data;
+        return head->data; // Falta controlar caso vacío
     };
     T back() {
-        return tail->data;
+        return tail->data; // Igual que el anterior
     };
     void push_front(T value) {
         Node<T>* nuevo = new Node<T>;
@@ -56,13 +56,13 @@ public:
             tail = nuevo;
         }
     };
-    void pop_front() {
+    void pop_front() { // No se controla el caso de lista vacía
         Node<T> *node = new Node<T>;
         node = head->next;
         delete head;
         head = node;
     };
-    void pop_back(){
+    void pop_back(){ // No se controla el caso de lista vacía
         Node<T> *node = head;
         while(node->next != tail) {
             node = node->next;
@@ -88,7 +88,7 @@ public:
             return node->data;
         }
     };
-    void concat(List<T> *other) {
+    void concat(List<T> *other) { // Se debería poder con referencia &
         if(!other->empty()){
             tail->next = other->head;
             tail = other->tail;
@@ -97,10 +97,10 @@ public:
             tail = other->tail;
         }
     };
-    bool empty() {
+    bool empty() { // No es necesario el ?true:false
         return head==NULL?true:false;
     };
-   int size() {
+   int size() { // Podría usarse el int nodes para mejorar el tiempo
         int contador = 0;
         if(empty()){
             return contador;
@@ -126,7 +126,7 @@ public:
             cout<<endl;
         }
     };
-   void print_reverse() {
+   void print_reverse() { // Podría implementarse mejor con recursión
         if(empty()){
             cout<<"la lista está vacía"<<endl;
         }else{
@@ -138,13 +138,13 @@ public:
             cout<<endl;
         }
     };
-   void clear() {
+   void clear() { // No se implementó
 
     };
     Iterator<T> begin();
     Iterator<T> end();
 
-    ~List();
+    ~List(); // No se implementó
 
 
 };
